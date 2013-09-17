@@ -1,0 +1,27 @@
+{% load i18n filer_tags looptags sekizai_tags thumbnail %}
+{% addtoblock "js" %}
+<script type='text/javascript' src="{{ STATIC_URL }}galleria/galleria-1.2.8.min.js"></script>
+<script type='text/javascript'>
+$(document).ready(function() {
+  Galleria.loadTheme('{{ STATIC_URL}}galleria/themes/classic/galleria.classic.min.js');
+  var img_width = $('#horsegallery').width();
+  $('#horsegallery').galleria({ width: img_width, height: img_width * aspect_ratio });
+  $('#horsegallery').css('float', 'right')
+});
+</script>
+{% endaddtoblock %}
+<div id='horsegallery'>
+<ul>
+{% fileloop horse.tags %}
+{% if fileloop.counter0 == 0 %}
+<script type='text/javascript'>
+  if ({{file.height}} < {{file.width}})
+    aspect_ratio={{ file.height }} / {{ file.width }};
+  else
+    aspect_ratio=0.7
+</script>
+{% endif %}
+  <li><a href='{{ file.url }}'><img src='{% thumbnail file 200x300 %}' /></a></li>
+{% endfileloop %}
+</ul>
+</div>

@@ -1,0 +1,21 @@
+{% extends "site_base.html" %}
+{% load i18n %}
+{% block body %}
+<p>
+Rekisteröityminen on mahdollista tällä hetkellä vain käyttämällä Facebookia. Klikkaa alla olevasta napista rekisteröityäksesi tai kirjautuaksesi sisään.
+</p>
+
+<a rel="external" href="{% url socialauth_begin 'facebook' %}?next={{ next }}"><img src="{{ STATIC_URL}}facebook/images/facebook_connect.png" alt="Facebook Connect"></a>
+
+<p>
+Rekisteröitymismahdollisuus ilman Facebookia on tulossa myöhemmin. Jos sinulla sattuu olemana tunnukset, voit kirjautua alla:
+</p>
+
+<form method='POST' action='{% url django.contrib.auth.views.login %}'/>
+{{ form.as_p }}
+{% csrf_token %}
+<input type='hidden' name='next' value='{{ next }}'/>
+<input type='submit' value='{% trans "Login" %}'/>
+</form>
+
+{% endblock body %}

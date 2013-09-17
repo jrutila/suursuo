@@ -1,0 +1,159 @@
+<!doctype html>
+{% load cms_tags sekizai_tags menu_tags i18n %}
+
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!-- Consider adding a manifest.appcache: h5bp.com/d/Offline -->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8"/>
+
+        <!-- Use the .htaccess and remove these lines to avoid edge case issues.
+             More info: h5bp.com/i/378 -->
+        <!-- IE sucks <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>-->
+
+        <title>Suursuon ratsutalli</title>
+
+        <meta name="description" content=""/>
+        <!-- Mobile viewport optimized: h5bp.com/viewport -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
+
+        {% if request.is_mobile %}
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.css" />
+        {% else %}
+        <link href="{{ STATIC_URL }}css/base.css" rel="stylesheet" type="text/css" />
+        <link href="{{ STATIC_URL }}css/cool.css" rel="stylesheet" type="text/css" />
+        {% endif %}
+        <link href="{{ STATIC_URL }}css/print.css" media="print" rel="stylesheet" type="text/css" />
+        <link href="{{ STATIC_URL }}css/jquery-ui.css" rel="stylesheet" type="text/css" />
+
+        {% block extra_head %}{% endblock %}
+        {% render_block "css" %}
+        <script type='text/javascript'>
+          STATIC_URL = "{{ STATIC_URL }}";
+        </script>
+
+        <!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
+        <!-- All JavaScript at the bottom, except this Modernizr build.
+             Modernizr enables HTML5 elements & feature detects for optimal performance.
+             Create your own custom Modernizr build: www.modernizr.com/download/ -->
+        <script src="{{ STATIC_URL }}js/modernizr-2.5.3.min.js"></script>
+    </head>
+    <body>
+      <div data-role="page" data-url="{{ request.get_full_path }}">
+    <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
+         chromium.org/developers/how-tos/chrome-frame-getting-started -->
+    <!--[if lt IE 7]><p class=chromeframe>{% blocktrans %}Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.{% endblocktrans %}</p><![endif]-->
+      <header data-role="header" data-position="inline">
+      <h1>
+        {% if not request.is_mobile %}
+        <div><a href="/"><img src="{{ STATIC_URL }}images/logo.png" alt="Suursuon ratsutalli"/></a></div>
+        {% else %}
+        Suursuon ratsutalli
+        {% endif %}
+      </h1>
+        <a class='ui-stables-home' href="/">{% trans "Home" %}</a>
+        {% if not request.is_mobile %}
+          <div id="user">
+        {% endif %}
+        {% if request.user.is_authenticated %}
+            <a href="{{ request.user.get_profile.get_absolute_url }}">{{ request.user.first_name }}</a>
+        {% else %}
+	  <a href="{% url django.contrib.auth.views.login %}{% ifnotequal request.path '/logout/' %}?next={{ request.path }}{% endifnotequal %}">{% trans "Login" %}</a>
+        {% endif %}
+        {% if not request.is_mobile %}
+	</div>
+        {% endif %}
+      </header>
+
+      {% if request.current_page.is_home %}
+      <nav class='home'>
+      {% else %}
+      <nav>
+      {% endif %}
+
+      {% block nav %}
+      {% if not request.is_mobile or request.current_page.is_home %}
+      <ul data-role="listview" id="mainmenu" style="background-image: url('{{ STATIC_URL }}images/menu_images/{{ request.current_page.reverse_id }}.png')">
+          {% show_menu 0 0 %}
+      </ul>
+      {% endif %}
+      <ul data-role="listview" id="submenu">
+          {% show_menu 1 1 %}
+      </ul>
+      {% endblock nav %}
+
+      </nav>
+
+      <div id='main' data-role="content">
+      {% if not request.current_page.is_home %}
+        <div id='content'>
+          <article>
+          {% block content %}
+          {% endblock %}
+          </article>
+        </div>
+      {% else %}
+        <div id="news">
+          <h1>{% trans "Current" %}</h1>
+        </div>
+      {% endif %}
+      </div>
+      <footer class="vcard" data-role="footer">
+        <div class='footer'>
+        <abbr id="stablename" class="fn">Suursuon Ratsutalli Oy</abbr>
+        <address id='stableaddress' class="adr">
+          <abbr class="street-address">Ravilankaari 8 A</abbr>,
+          <abbr class="postal-code">45160</abbr>
+          <abbr class="locality">Kouvola</abbr></address>
+        <abbr id='stablephone' class="tel">{% trans "+358458524524" %}</abbr>
+        </div>
+        <aside id="language">
+<!--
+          {% language_chooser 'short' %}
+-->
+        </aside>
+      </footer>
+      </div><!-- /page -->
+
+      <!-- JavaScript at the bottom for fast page loading -->
+
+      <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+      <script>window.jQuery || document.write('<script src="{{ STATIC_URL }}js/libs/jquery-1.7.1.min.js"><\/script>')</script>
+
+      <!-- scripts concatenated and minified via build script -->
+      <script src="{{ STATIC_URL }}js/jquery-ui.js"></script>
+
+      {% render_block "js" %}
+
+      {% if request.is_mobile %}
+        <script src="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.js"></script>
+        <!--<script src="{{ STATIC_URL }}js/jQuery.ui.datepicker.js"></script>-->
+        <!--<script src="{{ STATIC_URL }}js/jquery.ui.datepicker.mobile.js"></script>-->
+      {% else %}
+        <script type='text/javascript' src='{{ STATIC_URL }}js/cool.js'></script>
+      {% endif %}
+      <script type='text/javascript' src='{{ STATIC_URL }}js/date_picker.js'></script>
+      <!-- end scripts -->
+
+      <!-- Asynchronous Google Analytics snippet. Change UA-XXXXX-X to be your site's ID.
+           mathiasbynens.be/notes/async-analytics-snippet -->
+	<script type="text/javascript">
+
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-32607479-1']);
+	  _gaq.push(['_trackPageview']);
+
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+
+	</script>
+    </body>
+</html>
