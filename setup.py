@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 setup(
     name = "suursuo",
     version = "dev",
-    packages=find_packages(),
+    packages=['suursuo'],
     include_package_data=True,
     author = "Juho Rutila",
     author_email = "juho.rutila@iki.fi",
