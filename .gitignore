@@ -1,0 +1,6 @@
+*.pyc
+reversion
+schedule
+*.swp
+static/
+media/*
