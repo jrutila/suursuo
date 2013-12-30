@@ -18,13 +18,10 @@ setup(
         'django-social-auth',
         'django-apptemplates',
         'django-menus',
-        'django-blog-zinnia==0.12.3.1',
+        'django-blog-zinnia',
         'PIL',
         'cmsplugin-zinnia',
     ],
     zip_safe=False,
-    dependency_links = [
-      "https://api.github.com/repos/jrutila/django-blog-zinnia/tarball/master#egg=django-blog-zinnia-0.12.3.1",
-    ]
 
 )
