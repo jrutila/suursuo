@@ -22,7 +22,7 @@ packages, data_files = [], []
 root_dir = os.path.dirname(__file__)
 if root_dir != '':
     os.chdir(root_dir)
-myapp_dir = 'stables'
+myapp_dir = 'suursuo'
 
 for dirpath, dirnames, filenames in os.walk(myapp_dir):
     # Ignore dirnames that start with '.'
@@ -51,8 +51,10 @@ setup(
         'django-social-auth',
         'django-apptemplates',
         'django-blog-zinnia',
+        'django-filer',
         'PIL',
         'cmsplugin-zinnia',
+        'cmsplugin-filer',
     ],
     zip_safe=False,
 

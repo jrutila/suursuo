@@ -1,5 +1,5 @@
 <!doctype html>
-{% load cms_tags sekizai_tags menu_tags i18n zinnia_tags %}
+{% load cms_tags sekizai_tags menu_tags i18n zinnia_tags staticfiles %}
 
 <!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
@@ -9,6 +9,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
     <head>
         <meta charset="utf-8"/>
+        {% block meta %}{% endblock %}
 
         <!-- Use the .htaccess and remove these lines to avoid edge case issues.
              More info: h5bp.com/i/378 -->
@@ -29,8 +30,11 @@
         {% endif %}
         <link href="{{ STATIC_URL }}suursuo/css/print.css" media="print" rel="stylesheet" type="text/css" />
         <link href="{{ STATIC_URL }}suursuo/css/jquery-ui.css" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" type="text/css" media="screen, projection" href="{% static "zinnia/css/screen.css" %}" />
+        <link rel="stylesheet" type="text/css" media="print" href="{% static "zinnia/css/print.css" %}" />
 
         {% block extra_head %}{% endblock %}
+        {% block link %}{% endblock %}
         {% render_block "css" %}
         <script type='text/javascript'>
           STATIC_URL = "{{ STATIC_URL }}";
@@ -42,7 +46,7 @@
              Create your own custom Modernizr build: www.modernizr.com/download/ -->
         <script src="{{ STATIC_URL }}suursuo/js/modernizr-2.5.3.min.js"></script>
     </head>
-    <body>
+    <body class="zinnia default">
       <div data-role="page" data-url="{{ request.get_full_path }}">
     <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
          chromium.org/developers/how-tos/chrome-frame-getting-started -->
@@ -60,9 +64,8 @@
           <div id="user">
         {% endif %}
         {% if request.user.is_authenticated %}
-            <a href="{{ request.user.get_profile.get_absolute_url }}">{{ request.user.first_name }}</a>
+            <a href="{{ request.user.get_absolute_url }}">{{ request.user.first_name }}</a>
         {% else %}
-	  <a href="{% url django.contrib.auth.views.login %}{% ifnotequal request.path '/logout/' %}?next={{ request.path }}{% endifnotequal %}">{% trans "Login" %}</a>
         {% endif %}
         {% if not request.is_mobile %}
 	</div>
@@ -99,7 +102,7 @@
       {% else %}
         <div id="news">
           <h1>{% trans "Current" %}</h1>
-          {% get_featured_entries %}
+          {% get_featured_entries template="featured.html" %}
         </div>
       {% endif %}
       </div>
