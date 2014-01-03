@@ -1,0 +1,106 @@
+nav.home li
+{
+  display: inline-block;
+  position: relative;
+  padding: 3px;
+  width: 13%;
+  min-width: 150px;
+}
+
+nav.home li a
+{
+  display: inline-block;
+  margin: 0px;
+  padding: 3px;
+  padding-bottom: 50px;
+  border-radius: 0em 0em 1em 1em;
+  width: 100%;
+}
+
+nav.home ul#mainmenu
+{
+  border: none;
+  background: none;
+  margin-left: auto;
+}
+
+/*
+nav li a div img
+{
+  position: relative;
+}
+*/
+
+nav li a div.bg
+{
+  overflow: hidden;
+  height: 400px;
+  background-image: url('/static/images/heading1.png');
+  background-position: center center;
+  background-size: auto 400px;
+}
+
+/*
+nav.home li a div.bg
+{
+  width: 170px;
+}
+*/
+
+nav.home li a .text
+{
+  width: 100%;
+  left: 0px;
+  right: 0px;
+  position: absolute;
+}
+
+nav li div.up
+{
+  position: absolute;
+  width: 100%;
+  height: 0px;
+}
+
+/* When screen width gets too narrow */
+/*
+@media all and (max-width: 900px)
+{
+*/
+  .narrow nav.home li
+  {
+    width: 100%;
+  }
+
+  .narrow nav.home li a
+  {
+    width: 100%;
+    padding-bottom: 20px;
+  }
+
+  .narrow nav.home li a div.bg
+  {
+    height: 50px;
+    width: 100%;
+  }
+
+  .narrow nav.home ul#mainmenu
+  {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+/*
+}
+*/
+
+#news h1
+{
+  font-size: large;
+}
+
+#news p
+{
+  font-size: small;
+  margin: 0px;
+  margin-top: 6px;
+}

@@ -1,0 +1,452 @@
+/* Sticky footer */
+/*
+*
+{
+  margin: 0px;
+}
+html, body
+{
+  height: 100%;
+}
+
+#wrap
+{
+  min-height: 100%;
+  margin: 0px auto -25px;
+}
+
+footer, #push
+{
+  height: 25px;
+}
+*/
+/* End sticky footer */
+@font-face
+{
+  font-family: 'BankGothic';
+  src: url('../font/BankGthd.ttf');
+}
+
+@font-face
+{
+  font-family: 'Junction';
+  src: url('../font/Junction.otf');
+}
+
+body
+{
+  background-color: #5c4c3c;
+  font-family: 'Gill Sans MT', Junction, serif;
+}
+
+body a
+{
+  color: gray;
+}
+
+input[type=submit]
+{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  color: #050505;
+  padding: 4px 10px;
+  background: -moz-linear-gradient(
+          top,
+          #998a7a 0%,
+          #5c4c3c);
+  background: -webkit-gradient(
+          linear, left top, left bottom, 
+          from(#998a7a),
+          to(#5c4c3c));
+  border-radius: 30px;
+  -moz-border-radius: 30px;
+  -webkit-border-radius: 30px;
+  border: 5px solid #000000;
+  -moz-box-shadow:
+          0px 1px 3px rgba(000,000,000,0.5),
+          inset 0px 0px 1px rgba(255,255,255,0.7);
+  -webkit-box-shadow:
+          0px 1px 3px rgba(000,000,000,0.5),
+          inset 0px 0px 1px rgba(255,255,255,0.7);
+  text-shadow:
+          0px -1px 0px rgba(000,000,000,0.4),
+          0px 1px 0px rgba(255,255,255,0.3);
+}
+
+nav
+{
+  text-align: center;
+  font-family: BankGothic;
+  position: relative;
+}
+
+nav ul#mainmenu
+{
+  margin: 0px;
+  padding: 0px;
+  border: solid black 4px;
+  border-radius: 10px;
+  min-height: 300px;
+  margin-right: auto;
+  margin-left: 240px;
+
+  background-position: center center;
+  background-size: 1300px;
+
+  min-width: 170px;
+}
+
+nav ul#submenu
+{
+  margin-top: 100px;
+  position: absolute;
+  display: block;
+  top: 0px;
+}
+
+nav li
+{
+ list-style-type: none; 
+ display: inline-block;
+ background-color: transparent;
+ margin-right: 0px;
+ margin-left: 0px;
+ font-size: large;
+ padding-top: 0px;
+ min-width: 120px;
+}
+
+nav ul#mainmenu li
+{
+  margin-bottom: 5px;
+}
+
+nav li a
+{
+  color: white;
+  text-decoration: none;
+  background-color: black;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 13px;
+  padding-bottom: 13px;
+  min-width: 100px;
+  display: block;
+  border-radius: 0px 0px 10px 10px;
+}
+
+nav li.selected, nav li.ancestor
+{
+  opacity: 0.5;
+}
+
+nav ul#submenu li
+{
+  display: block;
+  width: 200px;
+  margin-bottom: 10px;
+  text-align: left;
+  margin-right: 0px;
+}
+
+nav ul#submenu li a
+{
+  border-radius: 10px 0px 0px 10px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+#user
+{
+  position: absolute;
+  top: 0px;
+  right: 200px;
+  font-family: BankGothic;
+}
+
+body h1
+{
+  font-family: 'BankGothic';
+  white-space: nowrap;
+}
+
+body header h1
+{
+  color: gray;
+  text-align: center;
+  font-family: 'BankGothic';
+  margin-top: 67px;
+}
+
+body header h1 > div
+{
+  display: inline-block;
+  width: 320px;
+  height: 100px;
+  background-color: gray;
+  border: 2px solid black;
+  border-radius: 10px;
+}
+
+body header h1 > div img
+{
+  display: block;
+  position: relative;
+  top: -50px;
+  left: 50px;
+  height: 140px;
+}
+
+header a.ui-stables-home
+{
+  position: absolute;
+  top: 10px;
+}
+
+footer
+{
+  font-family: 'BankGothic';
+  color: white;
+}
+
+footer div.footer
+{
+  padding-left: 15px;
+  padding-right: 15px;
+  background-color: black;
+  border-radius: 10px 10px 10px 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+#language
+{
+  text-align: center;
+  min-width: 100px;
+  padding-top: 5px;
+}
+
+#language a
+{
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  color: white;
+  background-color: black;
+  height: 19px;
+  border-radius: 10px 10px 10px 10px;
+}
+
+#content
+{
+  margin-left: 8px;
+  margin-bottom: 10px;
+}
+
+body article
+{
+  padding: 5px;
+}
+
+#pagepic
+{
+  background-color: gray;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+#pageblog
+{
+  background-color: gray;
+}
+
+#pageblog h1
+{
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+/* Content tabular */
+#main
+{
+  display: table;
+  border-collapse:separate; 
+  border-spacing: 6px;
+}
+
+#content
+{
+  display: table-row;
+}
+
+#content article
+{
+  min-width: 100%;
+  width: 100%;
+  display: table-cell;
+
+  border: 3px solid black;
+  border-radius: 10px;
+  background-color: gray;
+}
+
+#content article a
+{
+  color: darkGray;
+}
+
+#content #pageside
+{
+  display: table-cell;
+  vertical-align: top;
+  text-align: center;
+}
+
+#content #pageside #pagepic
+{
+  vertical-align: middle;
+}
+
+#content #pageside #pageblog
+{
+  margin-top: 8px;
+  height: 100%;
+}
+
+footer
+{
+  display: table-row;
+}
+
+footer div.footer
+{
+  display: table-cell;
+}
+
+footer #language
+{
+  display: table-cell;
+}
+/* End content tabular */
+
+/* Footer inline */
+footer
+{
+  padding-left: 8px;
+}
+
+footer #footer-row
+{
+  display: table-row;
+}
+
+footer div.footer
+{
+  display: table-cell;
+  text-align: center;
+  vertical-align: top;
+  width: 100%;
+}
+
+@media screen and (min-width: 920px) {
+  footer address
+  {
+    display: inline;
+  }
+
+  footer #stablename
+  {
+    float: left;
+    padding-top: -5px;
+  }
+
+  footer #stablephone
+  {
+    float: right;
+  }
+
+  footer
+  {
+    display: table-row;
+  }
+}
+
+#language
+{
+  min-width: 150px;
+}
+
+/* End footer inline */
+
+/* Narrow compatibility */
+@media screen and (max-width: 600px) {
+  #pagepic, #pageblog {
+    display: none;
+  }
+}
+
+/*
+@media screen and (max-width: 720px) {
+  nav li {
+    display: block;
+    margin-top: 2px;
+  }
+}
+*/
+
+@media print {
+  nav {
+    display: none;
+  }
+  #pagepic, #pageblog {
+    display: none;
+  }
+}
+
+.narrow #mainmenu li
+{
+  width: 100%;
+  margin-top: 10px;
+}
+
+.narrow #mainmenu li a
+{
+  border-radius: 0px 10px 10px 0px;
+  margin-right: 10px;
+}
+
+@media all and (max-width: 500px)
+{
+  .narrow #mainmenu
+  {
+    margin-left: 0px;
+  }
+
+  .narrow #submenu
+  {
+    margin-top: 5px;
+    position: relative;
+    padding-left: 0px;
+  }
+
+  .narrow #submenu li
+  {
+  }
+
+  .narrow #submenu li a
+  {
+    border-radius: 0px 10px 10px 0px;
+  }
+}
+
+/* End Narrow compatibility */
+
+
+#main
+{
+  min-width: 98%;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}

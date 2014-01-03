@@ -1,0 +1,36 @@
+.zinnia.default .entry-info
+{
+    color: darkgray;
+    font-size: smaller;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+.zinnia.default .entry-last-update
+{
+    color: darkgray;
+    font-size: smaller;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+.zinnia.default .entry-title
+{
+    margin-bottom: 0px;
+}
+
+.zinnia.default .entry-footer
+{
+    font-size: smaller;
+}
+
+.zinnia.default .entry-footer p
+{
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+.zinnia #comments, .zinnia #pingbacks, .zinnia #trackbacks, .zinnia .entry-discussions, .zinnia #comment-form
+{
+    display: none;
+}

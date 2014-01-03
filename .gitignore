@@ -2,5 +2,4 @@
 reversion
 schedule
 *.swp
-static/
 media/*
