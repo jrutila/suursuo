@@ -15,11 +15,11 @@ class CourseApphook(CMSApp):
 
 apphook_pool.register(CourseApphook)
 
-class HorseApphook(CMSApp):
-    name = _("DEPRECATED Horse Apphook")
-    urls = []
+#class HorseApphook(CMSApp):
+    #name = _("DEPRECATED Horse Apphook")
+    #urls = []
 
-apphook_pool.register(HorseApphook)
+#apphook_pool.register(HorseApphook)
 
 class UserApphook(CMSApp):
     name = _("DEPRECATED User Apphook")

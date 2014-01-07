@@ -55,6 +55,7 @@ setup(
         'PIL',
         'cmsplugin-zinnia',
         'cmsplugin-filer',
+        'django-taggit',
     ],
     zip_safe=False,
 
